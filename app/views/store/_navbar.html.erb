@@ -1,0 +1,52 @@
+    <% if flash[:notice] %>
+      <div class="notification is-success global-notification">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+    <div class="notification is-danger global-notification">
+      <p class="alert"><%= alert %></p>
+    </div>
+    <% end %>
+     <nav class="navbar has-text-white" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <%= link_to root_path, class:"navbar-item" do %>
+          <h1 class="title is-5 has-text-white">BoutiqueWii</h1>
+        <% end  %>
+      <div class="navbar-burger burger has-text-white" data-target="navbar ">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped button cart">
+              <%= link_to cart_show_path  do %>
+               <span class="icon is-small ">
+                <i class="fa fa-shopping-cart has-text-white"></i>
+               </span>
+              <% end %>
+            </div> 
+
+      
+
+          <% if current_user %>
+            
+              <%= link_to 'Account', edit_user_registration_path, class: "navbar-item button cart" %>
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, data:{ turbo_method: :delete }, class:"navbar-item button cart" %>
+          <% else %>
+
+              <%= link_to "Sign In", new_user_session_path, class:"navbar-item button cart " %>
+              <%= link_to "Sign up", new_user_registration_path, data: {turbo:false}, class:"navbar-item button cart"%>
+
+            <% end %>
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </nav>
+
